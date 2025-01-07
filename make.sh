@@ -52,7 +52,7 @@ function priv_lazbuild
         declare -A VAR=(
             [out]=$(mktemp)
         )
-        if (lazbuild --recursive --no-write-project --build-mode='release' --widgetset='qt5' --build-all "${REPLY}" > "${VAR[out]}"); then
+        if (lazbuild --recursive --no-write-project --widgetset='qt5' --build-all "${REPLY}" > "${VAR[out]}"); then
             printf '\x1b[32m\t[%s]\tbuild project\t%s\x1b[0m\n' "${?}" "${REPLY}"
             grep --color='always' 'Linking' "${VAR[out]}"
         else
